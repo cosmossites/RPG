@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Queda dos Basiliscos | Fichas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <p class="brand__eyebrow">RPG Pós-Apocalíptico</p>
+        <h1>A Queda dos Basiliscos</h1>
+        <p class="brand__text">Crie e mantenha sua ficha em páginas separadas, pronta para usar no celular.</p>
+      </div>
+
+      <nav class="nav-pages">
+        <button class="nav-pages__button active" data-page-target="page-intro">1. Personagem</button>
+        <button class="nav-pages__button" data-page-target="page-stats">2. Estatísticas</button>
+        <button class="nav-pages__button" data-page-target="page-resources">3. Recursos</button>
+        <button class="nav-pages__button" data-page-target="page-items">4. Itens</button>
+        <button class="nav-pages__button" data-page-target="page-sheet">5. Ficha Final</button>
+      </nav>
+
+      <div class="sidebar__footer">
+        <button id="save-button" class="button button--primary" type="button">Salvar ficha</button>
+        <button id="new-sheet-button" class="button button--ghost" type="button">Nova ficha</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="page-intro" class="page active">
+        <div class="page__hero">
+          <div>
+            <p class="page__eyebrow">Página 1</p>
+            <h2>Identidade do sobrevivente</h2>
+            <p>Comece pela essência do personagem. Depois vamos para atributos, recursos, itens e a ficha final.</p>
+          </div>
+        </div>
+
+        <div class="panel panel--form">
+          <div class="field-grid field-grid--two">
+            <label class="field field--wide">
+              <span>Nome do personagem</span>
+              <input type="text" id="name" maxlength="60" placeholder="Ex: Nara da Ferrugem">
+            </label>
+
+            <label class="field">
+              <span>Foto do personagem</span>
+              <input type="file" id="photo" accept="image/*">
+              <small>Escolha uma imagem da galeria do celular ou do computador.</small>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Descrição do personagem</span>
+            <textarea id="description" rows="8" placeholder="Aparência, jeito de falar, passado, cicatrizes, vínculos, motivações..."></textarea>
+          </label>
+
+          <div class="preview-card">
+            <div class="preview-card__image-wrap">
+              <img id="intro-photo-preview" class="preview-card__image hidden" alt="Prévia do personagem">
+              <div id="intro-photo-fallback" class="preview-card__fallback">Prévia da foto</div>
+            </div>
+            <div class="preview-card__body">
+              <p class="page__eyebrow">Prévia</p>
+              <h3 id="intro-name-preview">Seu personagem ainda não tem nome</h3>
+              <p id="intro-description-preview">A descrição aparecerá aqui assim que você começar a preencher.</p>
+            </div>
+          </div>
+
+          <div class="page-actions">
+            <button class="button button--primary" type="button" data-go-page="page-stats">Ir para Estatísticas</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-stats" class="page">
+        <div class="page__hero">
+          <div>
+            <p class="page__eyebrow">Página 2</p>
+            <h2>Estatísticas</h2>
+            <p>Defina os atributos base do seu personagem para a ficha.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="stats-panel">
+            <label class="field stat-field">
+              <span>FOR</span>
+              <input type="number" id="strength" min="0" max="20" value="0">
+              <small>Força bruta, impacto físico e esforço.</small>
+            </label>
+            <label class="field stat-field">
+              <span>Agi</span>
+              <input type="number" id="agility" min="0" max="20" value="0">
+              <small>Velocidade, reflexo e precisão corporal.</small>
+            </label>
+            <label class="field stat-field">
+              <span>Per</span>
+              <input type="number" id="perception" min="0" max="20" value="0">
+              <small>Leitura do ambiente, rastros e atenção.</small>
+            </label>
+            <label class="field stat-field">
+              <span>Cons</span>
+              <input type="number" id="constitution" min="0" max="20" value="0">
+              <small>Fôlego, resistência e saúde.</small>
+            </label>
+          </div>
+
+          <div class="page-actions">
+            <button class="button button--ghost" type="button" data-go-page="page-intro">Voltar</button>
+            <button class="button button--primary" type="button" data-go-page="page-resources">Ir para Recursos</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-resources" class="page">
+        <div class="page__hero">
+          <div>
+            <p class="page__eyebrow">Página 3</p>
+            <h2>Recursos de sobrevivência</h2>
+            <p>Esses números podem ser ajustados depois durante a sessão real.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="field-grid field-grid--three">
+            <label class="field">
+              <span>Vida</span>
+              <input type="number" id="life" min="0" max="999" value="10">
+            </label>
+            <label class="field">
+              <span>Pratas</span>
+              <input type="number" id="silver" min="0" max="9999" value="0">
+              <small>Limite máximo: 9999.</small>
+            </label>
+            <label class="field">
+              <span>Presságios</span>
+              <input type="number" id="omens" min="0" max="99" value="0">
+            </label>
+            <label class="field">
+              <span>Dias de comida</span>
+              <input type="number" id="foodDays" min="0" max="365" value="0">
+            </label>
+            <label class="field">
+              <span>Dias de bebida</span>
+              <input type="number" id="drinkDays" min="0" max="365" value="0">
+            </label>
+          </div>
+
+          <div class="page-actions">
+            <button class="button button--ghost" type="button" data-go-page="page-stats">Voltar</button>
+            <button class="button button--primary" type="button" data-go-page="page-items">Ir para Itens</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-items" class="page">
+        <div class="page__hero">
+          <div>
+            <p class="page__eyebrow">Página 4</p>
+            <h2>Arsenal e mochila</h2>
+            <p>Escolha um item no catálogo visual, depois clique em adicionar. Dá para repetir várias vezes.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="item-toolbar">
+            <div class="field">
+              <span>Buscar item</span>
+              <input type="text" id="item-search" placeholder="Ex: facão, água, munição...">
+            </div>
+            <div class="field">
+              <span>Quantidade</span>
+              <input type="number" id="item-quantity" min="1" max="99" value="1">
+            </div>
+            <div class="field field--action">
+              <span>Selecionado</span>
+              <div id="selected-item-name" class="selected-item-name">Nenhum item selecionado</div>
+            </div>
+            <div class="field field--action">
+              <span>Ação</span>
+              <button id="add-item-button" class="button button--primary" type="button">Adicionar item</button>
+            </div>
+          </div>
+
+          <div id="items-catalog" class="items-catalog"></div>
+        </div>
+
+        <div class="panel panel--inventory">
+          <div class="panel__topline">
+            <h3>Itens na ficha</h3>
+            <p>Você pode remover itens depois se quiser.</p>
+          </div>
+          <div id="inventory-list" class="inventory-list"></div>
+        </div>
+
+        <div class="page-actions">
+          <button class="button button--ghost" type="button" data-go-page="page-resources">Voltar</button>
+          <button class="button button--primary" type="button" data-go-page="page-sheet">Ir para Ficha Final</button>
+        </div>
+      </section>
+
+      <section id="page-sheet" class="page">
+        <div class="page__hero">
+          <div>
+            <p class="page__eyebrow">Página 5</p>
+            <h2>Ficha final</h2>
+            <p>Aqui fica a versão pronta para consultar e ajustar durante a sessão.</p>
+          </div>
+        </div>
+
+        <div id="sheet-empty" class="panel panel--empty">
+          <h3>Sua ficha vai aparecer aqui</h3>
+          <p>Preencha as páginas e clique em salvar ficha para montar a versão final.</p>
+        </div>
+
+        <article id="final-sheet" class="final-sheet hidden">
+          <div class="panel final-sheet__hero">
+            <div class="final-sheet__photo-wrap">
+              <img id="sheet-photo" class="final-sheet__photo hidden" alt="Foto do personagem">
+              <div id="sheet-photo-fallback" class="final-sheet__fallback">Sem foto</div>
+            </div>
+
+            <div class="final-sheet__identity">
+              <p class="page__eyebrow">Sobrevivente Registrado</p>
+              <h3 id="sheet-name">Sem nome</h3>
+              <p id="sheet-description">Sem descrição cadastrada.</p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel__topline">
+              <h3>Recursos rápidos</h3>
+              <p>Use os botões para alterar durante a partida.</p>
+            </div>
+            <div class="resource-grid">
+              <div class="resource-card">
+                <span>Vida</span>
+                <div class="resource-controls">
+                  <button type="button" data-adjust="life" data-change="-1">-</button>
+                  <strong id="sheet-life">0</strong>
+                  <button type="button" data-adjust="life" data-change="1">+</button>
+                </div>
+              </div>
+              <div class="resource-card">
+                <span>Pratas</span>
+                <div class="resource-controls">
+                  <button type="button" data-adjust="silver" data-change="-1">-</button>
+                  <strong id="sheet-silver">0</strong>
+                  <button type="button" data-adjust="silver" data-change="1">+</button>
+                </div>
+              </div>
+              <div class="resource-card">
+                <span>Presságios</span>
+                <div class="resource-controls">
+                  <button type="button" data-adjust="omens" data-change="-1">-</button>
+                  <strong id="sheet-omens">0</strong>
+                  <button type="button" data-adjust="omens" data-change="1">+</button>
+                </div>
+              </div>
+              <div class="resource-card">
+                <span>Comida</span>
+                <div class="resource-controls">
+                  <button type="button" data-adjust="foodDays" data-change="-1">-</button>
+                  <strong id="sheet-foodDays">0</strong>
+                  <button type="button" data-adjust="foodDays" data-change="1">+</button>
+                </div>
+              </div>
+              <div class="resource-card">
+                <span>Bebida</span>
+                <div class="resource-controls">
+                  <button type="button" data-adjust="drinkDays" data-change="-1">-</button>
+                  <strong id="sheet-drinkDays">0</strong>
+                  <button type="button" data-adjust="drinkDays" data-change="1">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel__topline">
+              <h3>Atributos</h3>
+              <p>Os valores base do personagem.</p>
+            </div>
+            <div class="stats-display">
+              <div class="stat-display"><span>FOR</span><strong id="sheet-strength">0</strong></div>
+              <div class="stat-display"><span>Agi</span><strong id="sheet-agility">0</strong></div>
+              <div class="stat-display"><span>Per</span><strong id="sheet-perception">0</strong></div>
+              <div class="stat-display"><span>Cons</span><strong id="sheet-constitution">0</strong></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel__topline">
+              <h3>Inventário</h3>
+              <p>Itens adicionados na página de catálogo.</p>
+            </div>
+            <div id="sheet-inventory" class="sheet-inventory"></div>
+          </div>
+
+          <div class="page-actions">
+            <button class="button button--ghost" type="button" data-go-page="page-items">Voltar para Itens</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
